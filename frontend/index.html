@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- <link href="./styles.css" rel="stylesheet"> -->
+    <link href="./output.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+
+    <title>Rental Property Scraper</title>
+</head>
+<body>
+    <section class="flex flex-col text-center">
+        <h1 class="text-3xl font-bold">Rental Property Scraper</h1>
+        
+        <div>
+            <label>Country: <span id="country">Malaysia</span></label>
+        </div>
+
+        <div>
+            <label>State</label>
+            <select id="state" title="State"></select>
+        </div>
+
+        <div>
+            <label>Bedrooms</label>
+            <select id="bedrooms" title="Bedrooms">
+                <option value=1 selected>1+</option>
+                <option value=2>2+</option>
+                <option value=3>3+</option>
+                <option value=4>4+</option>
+                <option value=5>5+</option>
+            </select>
+        </div>
+
+        <div id="price-range" class="flex flex-col sm:flex-row justify-center">
+            <div>
+                <label>Minimum Price (RM)</label>
+                <input id="min-price" type="number" title="Minimum Price (RM)" value="1000"></input>
+            </div>
+    
+            <div>
+                <label>Maximum Price (RM)</label>
+                <input id="max-price" type="number" title="Maximum Price (RM)" value="2000"></input>
+            </div>
+        </div>
+
+        <div>
+            <label>Search Term</label>
+            <input id="search-term" title="Search Term" value="Subang Jaya"></input>
+        </div>
+
+        
+        <div>
+            <label>Sort By</label>
+            <select id="sort-by" title="Sort By">
+                <option value="lowest-price" selected>Lowest Price</option>
+            </select>
+        </div>
+
+        <button id="search-button" title="Search">SEARCH</button>
+
+        <div id="result">
+
+        </div>
+    </section>
+
+    <!-- <script src="index.js"></script> -->
+    <script src="dist/bundle.js"></script>
+</body>
+</html>
