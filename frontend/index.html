@@ -11,17 +11,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
 
-    <title>Rental Property Scraper</title>
+    <title>Rental Property Finder | JCLOH98</title>
 </head>
 <body>
     <section class="flex flex-col text-center">
-        <h1 class="text-3xl font-bold">Rental Property Scraper</h1>
+        <h1 class="text-3xl font-bold">Rental Property Finder</h1>
         
         <div>
             <label>Country: <span id="country">Malaysia</span></label>
         </div>
 
         <div>
+            <label>Search Term</label>
+            <input id="search-term" title="Search Term" value="Subang Jaya"></input>
+        </div>
+
+        <div>
+            <input id="use-state" title="State" type="checkbox">
             <label>State</label>
             <select id="state" title="State"></select>
         </div>
@@ -29,11 +35,11 @@
         <div>
             <label>Bedrooms</label>
             <select id="bedrooms" title="Bedrooms">
-                <option value=1 selected>1+</option>
-                <option value=2>2+</option>
-                <option value=3>3+</option>
-                <option value=4>4+</option>
-                <option value=5>5+</option>
+                <option value=1 selected>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
             </select>
         </div>
 
@@ -47,11 +53,6 @@
                 <label>Maximum Price (RM)</label>
                 <input id="max-price" type="number" title="Maximum Price (RM)" value="2000"></input>
             </div>
-        </div>
-
-        <div>
-            <label>Search Term</label>
-            <input id="search-term" title="Search Term" value="Subang Jaya"></input>
         </div>
 
         
@@ -70,6 +71,6 @@
     </section>
 
     <!-- <script src="index.js"></script> -->
-    <script src="dist/bundle.js"></script>
+    <script src="bundle.js"></script>
 </body>
 </html>

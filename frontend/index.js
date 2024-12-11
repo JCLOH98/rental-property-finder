@@ -5,6 +5,12 @@ const malaysia_states = [
     "Perlis", "Putrajaya", "Sabah", "Sarawak", "Selangor", "Terengganu"
 ];
 
+const malaysia_states_value = [
+    "johor", "kedah", "kelantan", "kuala-lumpur", "labuan", 
+    "melaka", "negeri-sembilan", "pahang", "penang", "perak", 
+    "perlis", "putrajay", "sabah", "sarawak", "selangor", "terengganu"
+];
+
 const malaysia_region_codes = [
     "2hh35", "x5i6n", "8j2mm", "58jok", "aef3q", 
     "5kmak", "r9fza", "9ycjt", "5qvq6", "zagd9", 
@@ -16,8 +22,8 @@ const generateState = () => {
     for (let state of malaysia_states) {
         const option = document.createElement("option");
         option.innerText = state;
-        // option.setAttribute("value",state.toLowerCase().replace(" ","-"));
-        option.setAttribute("value",state);
+        option.setAttribute("value",state.toLowerCase().replace(" ","-"));
+        // option.setAttribute("value",state);
         if (state=="Kuala Lumpur") {
             option.setAttribute("selected",true);
         }
@@ -25,17 +31,32 @@ const generateState = () => {
     }
 }
 
-const scrapePropertyGuru = ()=>{
+function formatPropertyDiv (idx,title,location,price,room_info,link) {
+    let property_div = document.createElement("div");
+    property_div.classList.add("property-div");
+    
+    // property_div.innerHTML += `<div>idx:${idx}</div>`;
+    property_div.innerHTML += `<h6>${title}</h6>`;
+    property_div.innerHTML += `<div>${location}</div>`;
+    property_div.innerHTML += `<div>${price}</div>`;
+    property_div.innerHTML += `<div>${room_info}</div>`;
+    property_div.innerHTML += `<a href="${link}" target="blank">${link}</a>`;
 
+    return property_div;
 }
 
-const scrapeIProperty = async (state,bedrooms,min_price,max_price,sort_by) => {
+const getRentProperty = async (state,bedrooms,min_price,max_price,sort_by,search_term) => {
 
     // standardize data
-    const region_code = malaysia_region_codes[malaysia_states.indexOf(state)];
+    let region_code = malaysia_region_codes[malaysia_states_value.indexOf(state)];
+
+    if (!document.getElementById("use-state").checked) {
+        state="";
+        region_code="";
+    }
 
     // request url
-    let url=`${process.env.BACKEND_URI}/scrape_rental_source_1?region_code=${region_code}&min_price=${min_price}&max_price=${max_price}&bedrooms=${bedrooms}&sort_by=${sort_by}&search=true`;
+    let url=`${process.env.BACKEND_URI}/get_rental?state=${state}&region_code=${region_code}&min_price=${min_price}&max_price=${max_price}&bedrooms=${bedrooms}&sort_by=${sort_by}&search_term=${search_term}`;
 
     // GET data
     try {
@@ -43,16 +64,16 @@ const scrapeIProperty = async (state,bedrooms,min_price,max_price,sort_by) => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        const html = await response.text();
-        // console.log("html",html)
-        
-        // const parser = new DOMParser();
-        // const doc = parser.parseFromString(html, 'text/html');
+        const response_json = await response.json();
 
-        // // You can also scrape other data from the page, such as:
-        // const title = doc.querySelector('title').textContent;
-        // console.log('Title of the page:' + title);
-        document.getElementById("result").innerText = 'Title of the page:' + html;
+        for (const key in response_json) {
+            if (response_json.hasOwnProperty(key)) {    
+                const property_data = response_json[key];
+                document.getElementById("result").appendChild(formatPropertyDiv(key,property_data.title,property_data.location,property_data.price,property_data.room_info,property_data.link));
+                
+            }
+        }
+        // document.getElementById("result").innerText = response_json;
     }
     catch (err){
         console.error('Error:', err);
@@ -68,9 +89,12 @@ const scrapeData = () => {
     const min_price = document.getElementById("min-price").value;
     const max_price = document.getElementById("max-price").value;
     const sort_by = document.getElementById("sort-by").value;
+    const search_term = document.getElementById("search-term").value;
+
+    document.getElementById("result").innerText = "";
     
     if (country=="Malaysia") {
-        scrapeIProperty(state,bedrooms,min_price,max_price,sort_by);
+        getRentProperty(state,bedrooms,min_price,max_price,sort_by,search_term);
     }
 }
 
