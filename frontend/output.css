@@ -554,12 +554,36 @@ video {
   display: none;
 }
 
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
 .static {
   position: static;
 }
 
+.relative {
+  position: relative;
+}
+
 .flex {
   display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.h-96 {
+  height: 24rem;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .flex-col {
@@ -574,6 +598,10 @@ video {
   text-align: center;
 }
 
+.align-middle {
+  vertical-align: middle;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -584,7 +612,12 @@ video {
 }
 
 #result {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
+  width: 80%;
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
@@ -629,7 +662,7 @@ select {
   margin-right: auto;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  min-width: 8rem;
+  min-width: 9rem;
   border-radius: 9999px;
   border-width: 2px;
   padding-top: 0.25rem;
@@ -648,17 +681,82 @@ input {
   text-align: center;
 }
 
+a {
+  text-decoration-line: underline;
+}
+
 .property-div {
   margin: 0.5rem;
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
   border-width: 2px;
+  text-align: center;
+}
+
+.map {
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  width: 80%;
+  border-width: 2px;
 }
 
 @media (min-width: 640px) {
+  .map {
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 60%;
+  }
+}
+
+#map-route {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  height: 100%;
+  max-width: 13rem;
+  border-width: 2px;
+}
+
+@media (min-width: 640px) {
+  #map-route {
+    margin: 0px;
+  }
+}
+
+.location-option {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  margin: 0.5rem;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.location-option-button {
+  margin: 0.25rem;
+  border-radius: 0.5rem;
+  border-width: 1px;
+}
+
+@media (min-width: 640px) {
+  .sm\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
 }
-

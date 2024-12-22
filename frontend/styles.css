@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 #result {
-    @apply grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1;
+    @apply grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 w-4/5 my-2 mx-auto;
 }
 
 * {
@@ -23,7 +23,7 @@ button {
 }
 
 select {
-    @apply border-2 rounded-full mx-auto py-1 my-2 min-w-32;
+    @apply border-2 rounded-full mx-auto py-1 my-2 min-w-36;
 }
 
 option {
@@ -34,7 +34,26 @@ input {
     @apply border-2 rounded-full m-2 p-2 text-center;
 }
 
-.property-div{
-    @apply flex flex-col border-2 rounded-lg m-2;
+a {
+    @apply underline;
 }
 
+.property-div{
+    @apply flex flex-col border-2 rounded-lg m-2 text-center;
+}
+
+.map {
+    @apply sm:w-3/5 w-4/5 h-full border-2 sm:mx-0 mx-auto;
+}
+
+#map-route {
+    @apply border-2 max-w-52 h-full sm:m-0 mx-auto my-2;
+}
+
+.location-option {
+    @apply absolute border-2 p-2 m-2 rounded-lg border-black bg-white left-0 right-0 top-0 flex-col text-sm;
+}
+
+.location-option-button {
+    @apply m-1 border rounded-lg;
+}
