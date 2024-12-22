@@ -2,4 +2,4 @@
 /backend/node_modules
 /frontend/.env
 /backend/.env
-test.html
+/test.html
