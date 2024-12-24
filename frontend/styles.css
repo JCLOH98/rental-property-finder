@@ -8,10 +8,18 @@
 }
 
 * {
-    font-family: "Dosis", sans-serif;
+    font-family: "Nunito", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+}
+
+body {
+    @apply h-screen bg-background;
+} 
+
+#body {
+    @apply h-screen flex flex-col bg-background px-3 justify-start;
 }
 
 label {
@@ -19,19 +27,27 @@ label {
 }
 
 button {
-    @apply border-2 my-2 mx-auto py-2 px-5 rounded-full;
+    @apply my-2 mx-auto py-2 px-5 rounded-full bg-primary text-accent;
 }
 
-select {
-    @apply border-2 rounded-full mx-auto py-1 my-2 min-w-36;
+button:hover {
+    @apply font-bold;
+}
+
+input, select {
+    @apply border-2 rounded-full mx-auto py-1 my-2 w-36 max-w-full text-center;
+}
+
+input {
+    @apply px-3;
+}
+
+#use-state {
+    @apply w-fit;
 }
 
 option {
     @apply text-center;
-}
-
-input {
-    @apply border-2 rounded-full m-2 p-2 text-center;
 }
 
 a {
@@ -39,19 +55,19 @@ a {
 }
 
 .property-div{
-    @apply flex flex-col border-2 rounded-lg m-2 text-center;
-}
-
-.map {
-    @apply sm:w-3/5 w-4/5 h-full border-2 sm:mx-0 mx-auto;
+    @apply flex flex-col border bg-white border-primary rounded-lg m-2 text-center hover:-translate-y-1 hover:shadow-xl transition-all;
 }
 
 #map-route {
-    @apply border-2 max-w-52 h-full sm:m-0 mx-auto my-2;
+    @apply border border-primary max-w-52 h-96 sm:m-0 mx-auto my-2 rounded-lg sm:rounded-l-lg sm:rounded-r-none;
+}
+
+.map {
+    @apply sm:w-3/5 w-4/5 h-96 border border-primary sm:mx-0 mx-auto rounded-lg sm:rounded-r-lg sm:rounded-l-none;
 }
 
 .location-option {
-    @apply absolute border-2 p-2 m-2 rounded-lg border-black bg-white left-0 right-0 top-0 flex-col text-sm;
+    @apply absolute border-2 p-2 m-2 rounded-lg border-primary bg-white left-0 right-0 top-0 flex-col text-sm;
 }
 
 .location-option-button {
