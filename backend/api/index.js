@@ -16,7 +16,7 @@ app.use(cors());
 
 const minMaxPriceChecker = (min,max) => {
     let buf = 0;
-    if (min > max) {
+    if (parseFloat(min) > parseFloat(max)) {
         buf = min;
         min = max;
         max = buf;
